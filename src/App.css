@@ -6,6 +6,17 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    margin-top: 20px;
+}
+.count2_box{
+    width: 350px;
+    height: 200px;
+    border: black 2px solid;
+    border-radius: 15px;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
 }
 .counter_box{
     display: flex;
@@ -17,11 +28,11 @@ button{
     text-decoration: none;
     outline: none;
     display: inline-block;
-    width: 110px;
+    width: 90px;
     height: 45px;
     line-height: 45px;
     border-radius: 15px;
-    margin: 12px 23px;
+    margin: 5px 5px;
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     text-transform: uppercase;
@@ -37,8 +48,12 @@ button{
     border: black 2px solid;
     border-radius: 15px;
     margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100px;
 }
-.btns{
+.footer{
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -68,4 +83,47 @@ justify-content: space-between;
 .value_style{
     font-weight: bold;
 
+}
+
+.counters2 {
+    width: 350px;
+    height: 85px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin:20px;
+}
+.allValue {
+    width: 350px;
+
+    border-radius: 15px;
+    justify-content: center;
+    display: flex;
+
+}
+.count2{
+    display: flex;
+    margin: 20px;
+
+}
+.value_footer{
+    display: flex;
+
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.count2 input{
+    text-align: center;
+    font-size: 18px;
+}
+
+.btn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.spanValue span{
+    font-size: 75px;
+    padding-bottom: 20px;
 }

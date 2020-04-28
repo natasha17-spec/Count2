@@ -1,13 +1,7 @@
-/*.counter_box2{*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    margin:20px;*/
-/*}*/
+
 .counters2 {
     width: 350px;
-    height: 200px;
-    border: black 2px solid;
+    height: 85px;
     border-radius: 15px;
     justify-content: center;
     align-items: center;

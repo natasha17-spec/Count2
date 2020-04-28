@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import Count_1 from "./Count_1";
-import Count_2 from "./count2";
+import BTNS from "./BTNS";
+
+
 
 class App extends React.Component {
 
@@ -9,7 +10,7 @@ class App extends React.Component {
         count_start: 0,
         min: 0,
         max: 20,
-        error: false,
+        count: true,
         set: false
     };
     componentDidMount() {
@@ -26,7 +27,8 @@ class App extends React.Component {
             min: 0,
             max: 50,
             error: false,
-            set: false
+            set: false,
+
         };
 
         let stateAsString = localStorage.getItem('count');
@@ -35,43 +37,20 @@ class App extends React.Component {
         this.setState(state)};
 
 
-    incorrect = () => { //при некорректном значении
-        if (this.state.min < 0 || this.state.min === "" || this.state.min >= this.state.max) {
-            this.setState({
-                count_start: 'error',
-                set: true,
-                error: true
-            },
-                ()=>{
-                    this.saveState()
-                }
-                )
-        }
-    };
+    //
 
-    MaxValue = (e) => {
+    maxValue = (e) => {
         let max = e.target.value;
         this.setState({
-                max: Number(max),
-                set: true,
-                error: true,
-                count_start: 'press set'
-            },
-            () => {
-                this.incorrect()
+                max: Number(max)
             }
         )
     };
-    MinValue = (e) => {
+    minValue = (e) => {
         let min = e.target.value;
         this.setState({
-                min: Number(min),
-                set: true,
-                error: true,
-                count_start: 'press set'
-            },
-            () => {
-                this.incorrect()
+                min: Number(min)
+
             }
         )
     };
@@ -122,31 +101,38 @@ class App extends React.Component {
         )
     };
 
+    onSetVisible = () => {
+        this.setState({
+            count: false,
+            set: true
+        })
+    }
+    onCountVisible = () => {
+        this.setState({
+            count: true,
+            set: false,
+            count_start:this.state.min,
+            min:this.state.min
+        })
+    };
+
     render = () => {
+
+        let setDisabled = this.state.min < 0 === true || this.state.max <= this.state.min  === true
+        let buttonError = this.state.min < 0 === true || this.state.max <= this.state.min  === true ? 'disabled' : ''
         return (
             <div className='middle'>
-                <Count_1 count_start={this.state.count_start}
-                         setToZero={this.setToZero}
-                         count_value={this.count_value}
-                         error={this.state.error}
-                         max={this.state.max}
-                         MinValue={this.MinValue}
-                         MaxValue={this.MaxValue}
-                         // isDisabledRes={this.state.count_start}
-                         // isDisabledInc={this.state.count_start}
-
-                />
-
-                <Count_2
-                    min={this.state.min}
-                    max={this.state.max}
-                    MinValue={this.MinValue}
-                    MaxValue={this.MaxValue}
-                    set={!this.state.set}
-                    setValue={this.setValue}
-                    incorrect={this.props.incorrect}
-                />
-                }
+                {this.state.count && <div>
+                    <span>{this.state.count_start}</span>
+                    <button onClick={this.count_value}>ink</button>
+                    <button onClick={this.setToZero}>reset</button>
+                    <button onClick={this.onSetVisible}>set</button>
+                </div>}
+                {this.state.set && <div>
+                   <span>maxValue</span> <input onChange={this.maxValue} value={this.state.max} type='number'/>
+                   <span>minValue</span> <input onChange={this.minValue} value={this.state.min} type="number"/>
+                    <button  className={buttonError} disabled={setDisabled} onClick={this.onCountVisible}>set</button>
+                </div>}
             </div>
         )
     }

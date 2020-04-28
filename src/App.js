@@ -4,6 +4,7 @@ import Count_1 from "./Count_1";
 import Count_2 from "./count2";
 
 class App extends React.Component {
+
     state = {
         count_start: 0,
         min: 0,
